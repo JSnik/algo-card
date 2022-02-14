@@ -1,0 +1,55 @@
+.main {
+  .wrapper-border {
+  }
+  padding: 0 20px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 30px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
+  margin-top: 25px;
+}
+
+.quantity {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.card-version {
+  text-align: center;
+  padding: 7px 35px;
+  background: #81007f;
+  border-radius: 20px;
+  color: white;
+  margin: 5px 0;
+}
+
+.card-type {
+  margin: 5px 0;
+  align-self: center;
+}
+
+.upgrade {
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 25px;
+}

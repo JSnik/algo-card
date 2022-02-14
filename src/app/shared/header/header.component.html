@@ -1,0 +1,36 @@
+<div class="header-sticky">
+  <div class="header-content">
+    <div class="wrapper">
+      <div class="left-content">
+        <div class="logo">
+          <img src="assets/img/header/logo.svg" alt="" />
+        </div>
+      </div>
+      <div class="navbar-section left-m"></div>
+    </div>
+    <div class="wrapper-profile">
+      <div class="profile-section navbar-section">
+        <ng-container *ngIf="!isLoggedIn">
+          <button
+            (click)="connectWalletPopUp()"
+            class="btn-default btn-primary-costum"
+          >
+            CONNECT WALLET
+          </button>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn">
+          <button (click)="disconnect()" class="btn-default btn-primary-costum">
+            Disconnect
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pop-up
+  [openWallet]="true"
+  *ngIf="isPopUpOpened"
+  (isClosed)="closePopUp($event)"
+  (isConnectedToWallet)="connect($event)"
+  (logInValue)="loginIn($event)"
+></app-pop-up>
