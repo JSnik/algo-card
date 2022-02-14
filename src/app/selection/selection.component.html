@@ -3,109 +3,37 @@
     <div class="container-fluid">
       <div class="title">
         <h1>YOUR COLLECTION</h1>
-        <span>Select the President you want to Upgrade</span>
+        <span style="color: #81007F">Select the President you want to Upgrade</span>
       </div>
-      <div class="row">
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
+      <div class="classic-section">
+        <h3>Classic Cards</h3>
+        <div class="row">
+          <ng-container>
+            <div class="col-md-3" *ngFor="let item of classicArr">
+              <div [routerLink]="['/after-selection']" class="card">
+                <img  src="../../assets/img/president-screenshot.png" alt="" />
+                <div class="quantity">
+                  <span>(1/2)</span>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="silver-section">
+        <h3>Silver Cards</h3>
+        <div class="row">
+          <ng-container>
+            <div class="col-md-3" *ngFor="let item of silverArr">
+              <div [routerLink]="['/after-selection']" class="card">
+                <img  src="../../assets/img/president-screenshot.png" alt="" />
+                <div class="quantity">
+                  <span>(1/2)</span>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container>
-          <div class="col-md-3">
-            <div [routerLink]="['/after-selection']" class="card">
-              <img  src="../../assets/img/president-screenshot.png" alt="" />
-              <div class="quantity">
-                <span>(1/2)</span>
-              </div>
-            </div>
-          </div>
-        </ng-container>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

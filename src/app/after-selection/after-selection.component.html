@@ -1,12 +1,17 @@
 <div class="main">
   <div class="wrapper-border">
     <div class="title">
-      <h1>UPGRADE YOUR PRESIDENT</h1>
+      <div class="">
+        <h1>UPGRADE YOUR PRESIDENT</h1>
+        <img class="back" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpCVfncFVhE5zw-5nZTDM9sfe_ZBcB5MnZ0g&usqp=CAU"
+             style=""  alt=""
+        routerLink="/selection">
+      </div>
     </div>
     <div class="container-fluid">
       <ng-container>
-        <div class="col-md-3 top-section section">
-          <div class="card-version">CURRENT VERSION</div>
+        <div class="col-md-4 top-section section">
+          <button class="btn-primary-costum" style="margin-bottom: 15px">CURRENT VERSION</button>
           <span class="card-type">CLASSIC</span>
           <div class="card">
             <img src="../../assets/img/president-screenshot.png" alt="" />
@@ -17,8 +22,8 @@
         </div>
       </ng-container>
       <ng-container>
-        <div class="col-md-3 bot-section section">
-          <div class="card-version">UPGRADE PREVIEW</div>
+        <div class="col-md-4 bot-section section">
+          <button class="btn-secondary-costum upgrade-preview" style="margin-top: 20px; margin-bottom: 15px">UPGRADE PREVIEW</button>
           <span class="card-type">SILVER</span>
           <div class="card">
             <img src="../../assets/img/president-screenshot.png" alt="" />
@@ -28,7 +33,7 @@
           </div>
         </div>
       </ng-container>
-      <button class="btn-secondary-costum upgrade">UPGRADE</button>
+      <button class="btn-secondary-costum upgrade" style="width: 295px;">UPGRADE</button>
     </div>
   </div>
 </div>
