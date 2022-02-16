@@ -3,17 +3,38 @@
     <div class="container-fluid">
       <div class="title">
         <h1>YOUR COLLECTION</h1>
-        <span style="color: #81007F">Select the President you want to Upgrade</span>
+        <span style="color: #81007f"
+          >Select the President you want to Upgrade</span
+        >
       </div>
       <div class="classic-section">
         <h3>Classic Cards</h3>
         <div class="row">
           <ng-container>
-            <div class="col-md-3" *ngFor="let item of classicArr">
-              <div [routerLink]="['/after-selection']" class="card">
-                <img  src="../../assets/img/president-screenshot.png" alt="" />
-                <div class="quantity">
-                  <span>(1/2)</span>
+            <div
+              [ngClass]="{ 'flip-card': item === 'noUpgrade' }"
+              class="col-md-3"
+              *ngFor="let item of classicArr"
+            >
+              <div [ngClass]="{'flip-card-inner': item === 'noUpgrade'}" class="">
+                <div
+                  [ngClass]="{
+                    upgradeable: item === 'upgrade',
+                    'non-clickable-card': item === 'noClick',
+                    'flip-card-front': item === 'noUpgrade',
+                    'no-upgrade': item === 'noUpgrade'
+                  }"
+                  [routerLink]="['/after-selection']"
+                  class="card"
+                >
+                  <img src="../../assets/img/president-screenshot.png" alt="" />
+                  <div class="quantity">
+                    <span>(1/2)</span>
+                  </div>
+                </div>
+                <div *ngIf="item === 'noUpgrade'" class="flip-card-back">
+                  <img style="width: 60%; height: 60%;" src="https://www.pngmart.com/files/10/Stop-Sign-Transparent-Background.png" alt="">
+                  <span>NON UPGRADEABLE CARD</span>
                 </div>
               </div>
             </div>
@@ -25,8 +46,8 @@
         <div class="row">
           <ng-container>
             <div class="col-md-3" *ngFor="let item of silverArr">
-              <div [routerLink]="['/after-selection']" class="card">
-                <img  src="../../assets/img/president-screenshot.png" alt="" />
+              <div [routerLink]="['/after-selection']" class="card upgradeable">
+                <img src="../../assets/img/president-screenshot.png" alt="" />
                 <div class="quantity">
                   <span>(1/2)</span>
                 </div>

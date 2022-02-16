@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ConnectComponent } from './connect/connect.component';
-import { AuthServiceService } from './services/auth-service.service';
 import { WalletsConnectService } from './services/wallets-connect.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { PopUpComponent } from './shared/pop-up/pop-up.component';
@@ -27,7 +26,7 @@ import { AfterSelectionComponent } from './after-selection/after-selection.compo
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthServiceService,WalletsConnectService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,6 +31,5 @@
   [openWallet]="true"
   *ngIf="isPopUpOpened"
   (isClosed)="closePopUp($event)"
-  (isConnectedToWallet)="connect($event)"
-  (logInValue)="loginIn($event)"
+  (login)="onLogin($event)"
 ></app-pop-up>
