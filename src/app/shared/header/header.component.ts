@@ -1,12 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +10,24 @@ export class HeaderComponent implements OnInit {
   public isProfileOpened = false;
   public isPopUpOpened = false;
   public isLoggedIn: boolean = false;
+  public isDarkModeChanged = false;
+
+  @Output() themeWasChanged = new EventEmitter<boolean>();
 
   constructor(private router: Router) {}
 
   ngOnInit(): any {
     if (localStorage.getItem('wallet')) {
       this.isLoggedIn = true;
+    }
+  }
+
+  changeDarkMode() {
+    this.isDarkModeChanged = !this.isDarkModeChanged;
+    if (this.isDarkModeChanged) {
+      this.themeWasChanged.emit(true);
+    } else {
+      this.themeWasChanged.emit(false);
     }
   }
 

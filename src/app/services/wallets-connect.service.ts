@@ -18,7 +18,6 @@ export class WalletsConnectService {
   // #algo
 
   // algo
-  // რჩება
   connectToMyAlgo = async () => {
     try {
       const accounts = await myAlgoWallet.connect();

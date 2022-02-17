@@ -185,6 +185,9 @@ html {
 }
 // dark mode -----------------------------------------------------
 .dark-mode {
+  .cards {
+    color: #81007f;
+  }
   .dark-mode-icon {
     color: rgba(255, 255, 255, 0.8) !important;
     background: rgba(255, 255, 255, 0.8) !important;
@@ -199,38 +202,13 @@ html {
       }
     }
   }
-  app-swap-card {
-    .img {
-      img {
-        filter: opacity(0.2);
-      }
-    }
-  }
-  .input-costum {
-    background: rgba(255, 255, 255, 0.07) !important;
-    color: rgb(255, 255, 255, 0.8) !important;
-    //&::placeholder {
-    //  color: rgb(255, 255, 255, 0.8) !important;
-    //}
-    //&:focus {
-    //  background: rgba(255, 255, 255, 0) !important;
-    //  border-color: rgba(255, 255, 255, 0.3) !important;
-    //  box-shadow: rgb(255 255 255 / 6%) 0px 0px 0px 4px !important;
-    //}
-  }
-
-  textarea {
-    background: rgba(255, 255, 255, 0.07) !important;
-    color: rgba(255, 255, 255, 0.8) !important;
-    &::placeholder {
-      color: rgb(255, 255, 255, 0.8) !important;
-    }
-    &:focus {
-      background: rgba(255, 255, 255, 0) !important;
-      border-color: rgba(255, 255, 255, 0.3) !important;
-      box-shadow: rgb(255 255 255 / 6%) 0px 0px 0px 4px !important;
-    }
-  }
+  // app-swap-card {
+  //   .img {
+  //     img {
+  //       filter: opacity(0.2);
+  //     }
+  //   }
+  // }
 
   i {
     color: rgba(255, 255, 255, 0.8) !important;
@@ -250,7 +228,7 @@ html {
 
   .header-sticky {
     .header-content {
-      background: rgba(18, 18, 18, 0.7) !important;
+      background: rgba(#212529, 1) !important;
       .navbar-section {
         ul {
           li {
@@ -304,7 +282,7 @@ html {
       }
     }
   }
-  .MAIN {
+  .main {
     background: #1c1c1e;
   }
 
@@ -314,7 +292,7 @@ html {
     color: rgba(255, 255, 255, 0.8) !important;
   }
 
-  h3,
+  // h3,
   h4,
   h5,
   h6,
@@ -333,32 +311,6 @@ html {
 
   .wrapper-card {
     border: 1px solid rgba(129, 0, 127, 1) !important;
-  }
-
-  .drop-down {
-    .valueCatcher {
-      border: 1px solid rgba(129, 0, 127, 1) !important;
-      button {
-        color: rgba(255, 255, 255, 0.8) !important;
-      }
-    }
-    .dropDown {
-      background: #1c1c1e !important;
-      .section {
-        border: 1px solid rgba(129, 0, 127, 0.8) !important;
-        &.no-border {
-          border: unset !important;
-          &:hover {
-            button {
-              color: #81007f !important;
-            }
-          }
-        }
-        button {
-          color: rgba(255, 255, 255, 0.8) !important;
-        }
-      }
-    }
   }
 }
 // #dark mode -----------------------------------------------------
@@ -590,6 +542,7 @@ textarea {
 }
 .card {
   border: none !important;
+  background: transparent;
 }
 
 //             //

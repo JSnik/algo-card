@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'algo-card';
+
+  isThemeChanged: boolean = false;
+
+  changeTheme(value: boolean) {
+    this.isThemeChanged = value;
+    return this.isThemeChanged;
+  }
 }
