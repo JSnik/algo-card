@@ -1,6 +1,7 @@
 .main {
+  height: calc(100vh - 100px);
   .wrapper-border {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 120px);
   }
   padding: 0 20px;
 }

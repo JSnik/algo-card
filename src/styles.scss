@@ -185,6 +185,7 @@ html {
 }
 // dark mode -----------------------------------------------------
 .dark-mode {
+  background-color: #1c1c1e;
   .cards {
     color: #81007f;
   }
@@ -228,7 +229,7 @@ html {
 
   .header-sticky {
     .header-content {
-      background: rgba(#212529, 1) !important;
+      background: rgba(18, 18, 18, 0.7) !important;
       .navbar-section {
         ul {
           li {

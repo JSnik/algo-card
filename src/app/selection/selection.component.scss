@@ -1,11 +1,12 @@
 .main {
+  height: calc(100vh - 100px);
   .wrapper-border {
   }
   padding: 0 20px;
 }
 
 .container-fluid {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 160px);
   overflow-y: scroll;
 }
 
