@@ -7,24 +7,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectComponent } from './connect/connect.component';
 import { WalletsConnectService } from './services/wallets-connect.service';
-import { HeaderComponent } from './shared/header/header.component';
 import { PopUpComponent } from './shared/pop-up/pop-up.component';
 import { SelectionComponent } from './selection/selection.component';
 import { AfterSelectionComponent } from './after-selection/after-selection.component';
+import {DropDownSelectorComponent} from "./shared/drop-down-selector/drop-down-selector.component";
+import {HeaderComponent} from "./shared/header/header.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     ConnectComponent,
-    HeaderComponent,
     PopUpComponent,
     SelectionComponent,
     AfterSelectionComponent,
+    DropDownSelectorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
