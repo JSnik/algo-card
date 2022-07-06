@@ -1,3 +1,47 @@
-{
-    "234312597": [395209227]
-}
+[
+    {
+        "r0" : {
+            "id": 395209227,
+            "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r1": {
+                "id": 395209227,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r2": {
+                "id": 395209227,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r3": {
+                "id": 395209227,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        
+    },
+    {
+        "r0" : {
+            "id": 1234,
+            "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r1": {
+                "id": 123456,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r2": {
+                "id": 12345566,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        ,
+        "r3": {
+                "id": 654422,
+                "img": "../assets/img/president-screenshot.png"
+            }
+        
+    }
+
+]

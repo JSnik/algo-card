@@ -23,7 +23,9 @@
     "@randlabs/wallet-myalgo-js": "^1.0.2",
     "@walletconnect/client": "^1.6.6",
     "algorand-session-wallet": "^1.7.0",
+    "crypto-browserify": "^3.12.0",
     "rxjs": "~6.6.0",
+    "stream-browserify": "^3.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

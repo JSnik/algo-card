@@ -84,8 +84,8 @@ export async function getLogicFromTransaction(addr: string): Promise<LogicSigAcc
     const txns = await indexer.searchForTransactions()
         .address(addr).do()
 
-    for(let tidx in txns.transactions){
-        const txn = txns.transactions[tidx]
+    for(let tidx in txns['transactions']){
+        const txn = txns['transactions'][tidx]
         if(txn.sender == addr){
             const program_bytes = new Uint8Array(Buffer.from(txn.signature.logicsig.logic, "base64"));
             return new LogicSigAccount(program_bytes);

@@ -19,23 +19,9 @@
     "platform": {
         "burn_addr": "MXJT53H5ZO7KWBYMCLZ4ZVWEF5JS4NLVHEII6OI3DCLI3KL26BRDTAFJKA",
         "fee_addr": "IHONW5XLLSZAHHNIQSNU4UDJAPBJEPIIKZ4N5XCIVXY6EFVYWUUTWBQ3LA",
-        "staking_addr": "D563OYVONHDGJVZF7VS57FM347M2YVQ4XTQB5UQTOGFENIU6I6BMRG4A3E",
-        "staking_id": 11022,
-        "verse_app_id": 11008,
-        "verse_app_addr": "G2MPEHNTUDZQQKHRIDGEDW4PFPY5AOIA42B7NALMEPQUWX2VDCHSALYRHI",
-        "verse_asset_id": 11011,
-        "verse_project_id": "ac8b1992-2963-4910-a9a5-c3c37c49ef5f",
-        "verse_decimals": 6,
-        "backing_id": 11006,
-        "backing_addr": "JYBE3J5RHMOJMSGCQ7HXLAONBNO7S2BZMH6FIYWHKAOKKWQEKUU5KITHWU",
-        "backing_per_x_token": 1000000,
-        "locker_id": 11028,
-        "locker_addr": "3Y33WUERSTEGMOH2B6JOZQZLUE5BOON4TK7JFR3MKTU5KA7EOEACJCIU5E"
-    },
-    "contracts":{
-        "approval":"deployer_token_approval.teal",
-        "clear":"deployer_token_clear.teal",
-        "burn_teal":"burn_escrow.teal"
+        "upgrade_id": 11028,
+        "upgrade_addr": "3Y33WUERSTEGMOH2B6JOZQZLUE5BOON4TK7JFR3MKTU5KA7EOEACJCIU5E",
+        "flat_upgrade_fee": 5000000
     },
     "dev":{
         "debug_txns":false,

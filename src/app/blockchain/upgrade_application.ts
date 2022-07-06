@@ -1,10 +1,6 @@
 import { addrToB64, sendWait, getSuggested, getTransaction, getLogicFromTransaction, getGlobalState, readLocalState, StateToObj, getAlgodClient, getIndexer, isOptedIntoApp, isOptedIntoAsset } from "./algorand"
 import {
-    get_app_optin_txn,
-    get_verse_app_call_txn,
     get_pay_txn,
-    encodeParam,
-    get_app_closeout_txn,
     get_app_call_txn,
     get_asa_xfer_txn,
     get_asa_optin_txn
@@ -13,7 +9,6 @@ import algosdk, { Algodv2, getApplicationAddress, Transaction } from 'algosdk';
 import { platform_settings as ps } from "./platform-conf";
 import { SessionWallet } from "algorand-session-wallet"
 import { Injectable } from "@angular/core";
-import { getAppLocalStateByKey } from "../services/utils.algo";
 
 declare const AlgoSigner: any;
 
@@ -24,6 +19,19 @@ declare const AlgoSigner: any;
 export class UpgradeApp {
 
     constructor(){
+    }
+
+    async getAssetAmount(addr: string, assetId: number): Promise<any> {
+        let client: Algodv2 = getAlgodClient()
+        let accountInfo = await client.accountInformation(addr).do()
+        console.log(accountInfo)
+        let holding = 0
+        let holdingInfo = accountInfo['assets'].find((asset: any) => {return asset['asset-id'] == assetId})
+        console.log(holdingInfo)
+        if(holdingInfo) {
+            holding = holdingInfo['amount']
+        }
+        return holding
     }
 
     async optInAsset(wallet: SessionWallet, assetId: number): Promise<any> {
