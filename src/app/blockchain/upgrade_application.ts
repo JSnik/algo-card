@@ -12,6 +12,60 @@ import { Injectable } from "@angular/core";
 
 declare const AlgoSigner: any;
 
+export enum StateKeys {
+    asset_count_key = "ac",
+    fee1_key = "f1",
+    fee2_key = "f2",
+    fee3_key = "f3",
+    fee_addr_key = "fa",
+    burn_addr_key = "ba",
+    asset1_key = "1",
+    asset2_key = "2",
+    asset3_key = "3",
+    asset4_key = "4",
+    asset5_key = "5",
+    asset6_key = "6",
+    asset7_key = "7",
+    asset8_key = "8",
+    asset9_key = "9",
+    asset10_key = "10",
+    asset11_key = "11",
+    asset12_key = "12",
+    asset13_key = "13",
+    asset14_key = "14",
+    asset15_key = "15",
+    asset16_key = "16",
+    asset17_key = "17",
+    asset18_key = "18",
+    asset19_key = "19",
+    asset20_key = "20",
+    asset21_key = "21",
+    asset22_key = "22",
+    asset23_key = "23",
+    asset24_key = "24",
+    asset25_key = "25",
+    asset26_key = "26",
+    asset27_key = "27",
+    asset28_key = "28",
+    asset29_key = "29",
+    asset30_key = "30",
+    asset31_key = "31",
+    asset32_key = "32",
+    asset33_key = "33",
+    asset34_key = "34",
+    asset35_key = "35",
+    asset36_key = "36",
+    asset37_key = "37",
+    asset38_key = "38",
+    asset39_key = "39",
+    asset40_key = "40",
+    asset41_key = "41",
+    asset42_key = "42",
+    asset43_key = "43",
+    asset44_key = "44",
+    asset45_key = "45"
+}
+
 @Injectable({
     providedIn: 'root',
   })
@@ -24,10 +78,8 @@ export class UpgradeApp {
     async getAssetAmount(addr: string, assetId: number): Promise<any> {
         let client: Algodv2 = getAlgodClient()
         let accountInfo = await client.accountInformation(addr).do()
-        console.log(accountInfo)
         let holding = 0
         let holdingInfo = accountInfo['assets'].find((asset: any) => {return asset['asset-id'] == assetId})
-        console.log(holdingInfo)
         if(holdingInfo) {
             holding = holdingInfo['amount']
         }
@@ -48,20 +100,27 @@ export class UpgradeApp {
         const suggested = await getSuggested(10)
         const addr = wallet.getDefaultAccount()
         
+        console.log(ps.platform.upgrade_id)
+        console.log(rarity)
         let amount = 2
+        let fee = ps.platform.upgrade_fee1
         if(rarity == 2) {
             amount = 3
+            fee = ps.platform.upgrade_fee2
+        } else if(rarity == 3) {
+            fee = ps.platform.upgrade_fee3
         }
 
         const transferTxn = new Transaction(get_asa_xfer_txn(suggested, addr, ps.platform.burn_addr, assetId, amount))
 
-        const pay = new Transaction(get_pay_txn(suggested, addr, ps.platform.fee_addr, ps.platform.flat_upgrade_fee))
+        const pay = new Transaction(get_pay_txn(suggested, addr, ps.platform.fee_addr, fee))
 
         suggested.fee = 2 * algosdk.ALGORAND_MIN_TX_FEE
         suggested.flatFee = true
         const args = [new Uint8Array(Buffer.from("upgrade")), algosdk.encodeUint64(rarity)]
         const assets = [higherAssetId]
-        const upgradeTxn = new Transaction(get_app_call_txn(suggested, addr, ps.platform.upgrade_id, args, undefined, assets, undefined))
+        const accounts = [ps.platform.burn_addr]
+        const upgradeTxn = new Transaction(get_app_call_txn(suggested, addr, ps.platform.upgrade_id, args, undefined, assets, accounts))
         
         const grouped = [transferTxn, pay, upgradeTxn]
 

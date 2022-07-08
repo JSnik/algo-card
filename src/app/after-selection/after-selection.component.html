@@ -13,33 +13,35 @@
       <ng-container>
         <div class="col-md-4 top-section section">
           <span class="card-preview-title" style="margin-bottom: 15px">CURRENT VERSION</span>
-          <span class="card-type">CLASSIC</span>
+          <span *ngIf="rarity <= 1"class="card-type">CLASSIC</span>
+          <span *ngIf="rarity == 2" class="card-type">SILVER</span>
+          <span *ngIf="rarity == 3" class="card-type">GOLD</span>
           <div class="card">
             <img src="../../assets/img/president-screenshot.png" alt="" />
             <div class="quantity">
-              <span>(1/2)</span>
+              <span *ngIf="rarity == 1">({{presidentInfo?.holdingBase}}/2)</span>
+              <span *ngIf="rarity == 2">({{presidentInfo?.holdingSilver}}/3)</span>
+              <span *ngIf="rarity == 3">({{presidentInfo?.holdingGold}}/2)</span>
             </div>
           </div>
         </div>
       </ng-container>
       <div class="big-screen-btn-container">
-        <button class="btn-secondary-costum upgrade small-screen-btn">UPGRADE</button>
+        <button class="btn-secondary-costum upgrade small-screen-btn" (click)="upgrade()">UPGRADE</button>
         <img class="arrow" src="https://www.pngmagic.com/product_images/arrow-png-icon.png" alt="">
         <!-- <img class="arrow" src="https://www.pngkit.com/png/full/9-93200_arrow-transparent-arrow-transparent.png" alt=""> -->
       </div>
       <ng-container>
         <div class="col-md-4 bot-section section">
           <span class="card-preview-title" style="margin-top: 20px; margin-bottom: 15px">UPGRADE PREVIEW</span>
-          <span class="card-type">SILVER</span>
+          <span *ngIf="rarity == 1"class="card-type">SILVER</span>
+          <span *ngIf="rarity == 2" class="card-type">GOLD</span>
+          <span *ngIf="rarity == 3" class="card-type">DIAMOND</span>
           <div class="card">
             <img src="../../assets/img/president-screenshot.png" alt="" />
-            <div class="quantity">
-              <span>(1/2)</span>
-            </div>
           </div>
         </div>
       </ng-container>
-      <button class="btn-secondary-costum upgrade big-screen-btn" style="width: 295px;">UPGRADE</button>
     </div>
   </div>
 </div>

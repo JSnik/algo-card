@@ -12,31 +12,25 @@
         <div class="row">
           <ng-container>
             <div
-              [ngClass]="{ 'flip-card': item === 'noUpgrade' }"
               class="col-md-3"
-              *ngFor="let item of classicArr"
+              *ngFor="let item of presidentsArray"
             >
-              <div [ngClass]="{'flip-card-inner': item === 'noUpgrade'}" class="">
                 <div
+                  style="position: relative;"
+                  (click)="storePresident(item, 1)"
+                  *ngIf="item.holdingBase > 0"
                   [ngClass]="{
-                    upgradeable: item === 'upgrade',
-                    'non-clickable-card': item === 'noClick',
-                    'flip-card-front': item === 'noUpgrade',
-                    'no-upgrade': item === 'noUpgrade'
+                    upgradeable: item.holdingBase >= 2,
+                    'non-clickable-card': item.holdingBase < 2
                   }"
                   [routerLink]="['/after-selection']"
                   class="card"
                 >
                   <img src="../../assets/img/president-screenshot.png" alt="" />
                   <div class="quantity">
-                    <span>(1/2)</span>
+                    <span>({{item.holdingBase}}/2)</span>
                   </div>
                 </div>
-                <div *ngIf="item === 'noUpgrade'" class="flip-card-back">
-                  <img style="width: 60%; height: 60%;" src="https://www.pngmart.com/files/10/Stop-Sign-Transparent-Background.png" alt="">
-                  <span>NON UPGRADEABLE CARD</span>
-                </div>
-              </div>
             </div>
           </ng-container>
         </div>
@@ -45,13 +39,26 @@
         <h3>Silver Cards</h3>
         <div class="row">
           <ng-container>
-            <div class="col-md-3" *ngFor="let item of silverArr">
-              <div [routerLink]="['/after-selection']" class="card upgradeable">
-                <img src="../../assets/img/president-screenshot.png" alt="" />
-                <div class="quantity">
-                  <span>(1/2)</span>
+            <div
+              class="col-md-3"
+              *ngFor="let item of presidentsArray"
+            >
+                <div
+                  style="position: relative;"
+                  (click)="storePresident(item, 2)"
+                  *ngIf="item.holdingSilver > 0"
+                  [ngClass]="{
+                    upgradeable: item.holdingSilver >= 3,
+                    'non-clickable-card': item.holdingSilver < 3
+                  }"
+                  [routerLink]="['/after-selection']"
+                  class="card"
+                >
+                  <img src="../../assets/img/president-screenshot.png" alt="" />
+                  <div class="quantity">
+                    <span>({{item.holdingSilver}}/3)</span>
+                  </div>
                 </div>
-              </div>
             </div>
           </ng-container>
         </div>
@@ -60,13 +67,26 @@
         <h3>Gold Cards</h3>
         <div class="row">
           <ng-container>
-            <div class="col-md-3" *ngFor="let item of silverArr">
-              <div [routerLink]="['/after-selection']" class="card upgradeable">
-                <img src="../../assets/img/president-screenshot.png" alt="" />
-                <div class="quantity">
-                  <span>(1/2)</span>
+            <div
+              class="col-md-3"
+              *ngFor="let item of presidentsArray"
+            >
+                <div
+                style="position: relative;"
+                (click)="storePresident(item, 1)"
+                  *ngIf="item.holdingGold > 0"
+                  [ngClass]="{
+                    upgradeable: item.holdingGold >= 2,
+                    'non-clickable-card': item.holdingGold < 2
+                  }"
+                  [routerLink]="['/after-selection']"
+                  class="card"
+                >
+                  <img src="../../assets/img/president-screenshot.png" alt="" />
+                  <div class="quantity">
+                    <span>({{item.holdingGold}}/2)</span>
+                  </div>
                 </div>
-              </div>
             </div>
           </ng-container>
         </div>

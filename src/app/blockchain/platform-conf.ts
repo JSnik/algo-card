@@ -24,7 +24,9 @@ type Platform = {
     fee_addr: string,
     upgrade_id: number,
     upgrade_addr: string,
-    flat_upgrade_fee: number
+    upgrade_fee1: number
+    upgrade_fee2: number
+    upgrade_fee3: number
 };
 type PlatformConf = {
     domain: string

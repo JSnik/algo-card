@@ -18,10 +18,12 @@
     "explorer":"algoscan.app",
     "platform": {
         "burn_addr": "MXJT53H5ZO7KWBYMCLZ4ZVWEF5JS4NLVHEII6OI3DCLI3KL26BRDTAFJKA",
-        "fee_addr": "IHONW5XLLSZAHHNIQSNU4UDJAPBJEPIIKZ4N5XCIVXY6EFVYWUUTWBQ3LA",
-        "upgrade_id": 11028,
-        "upgrade_addr": "3Y33WUERSTEGMOH2B6JOZQZLUE5BOON4TK7JFR3MKTU5KA7EOEACJCIU5E",
-        "flat_upgrade_fee": 5000000
+        "fee_addr": "DZUR56BQB5TQZCG3QERPJ2NB7JYBYGFAJBGBRQN2IUMTLXJE6RJ52ZYD3U",
+        "upgrade_id": 13097,
+        "upgrade_addr": "QRJ3VKT43K4E6F4YS6SKWBFKOVANVYTUKWV3DVHKCRMBVV4MY7L5HNGAYY",
+        "upgrade_fee1": 34000000,
+        "upgrade_fee2": 89000000,
+        "upgrade_fee3": 144000000
     },
     "dev":{
         "debug_txns":false,
