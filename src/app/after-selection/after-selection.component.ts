@@ -9,43 +9,49 @@ import { WalletsConnectService } from '../services/wallets-connect.service';
   styleUrls: ['./after-selection.component.scss']
 })
 export class AfterSelectionComponent implements OnInit {
-
+  isOptedIn = false
   presidentInfo: PresidentInfo | undefined
   rarity: number = -1
+  assetId: number = 0
+  higherAssetId: number = 0
   constructor(
     private walletService: WalletsConnectService,
     private upgradeApp: UpgradeApp
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if(localStorage.getItem('president')){
       this.presidentInfo = JSON.parse(localStorage.getItem('president')!)
       this.rarity = JSON.parse(localStorage.getItem('rarity')!)
     }
     console.log(this.rarity)
     console.log(this.presidentInfo)
+    let wallet = this.walletService.sessionWallet
+    if(wallet) {
+      if(this.rarity == 1) {
+        this.assetId = this.presidentInfo!.assetIdBase
+        this.higherAssetId = this.presidentInfo!.assetIdSilver
+      } else if(this.rarity == 2) {
+        this.assetId = this.presidentInfo!.assetIdSilver
+        this.higherAssetId = this.presidentInfo!.assetIdGold
+      } else if(this.rarity == 3) {
+        this.assetId = this.presidentInfo!.assetIdGold
+        this.higherAssetId = this.presidentInfo!.assetIdDiamond
+      }
+      this.isOptedIn = await this.upgradeApp.checkOptIn(wallet, this.higherAssetId)
+      console.log(this.isOptedIn)
+    }
+    
   }
 
   async upgrade(): Promise<void> {
     console.log("upgrade")
     let wallet = this.walletService.sessionWallet
     if(wallet) {
-      let assetId = 0
-      let higherAssetId = 0
-      if(this.rarity == 1) {
-        assetId = this.presidentInfo!.assetIdBase
-        higherAssetId = this.presidentInfo!.assetIdSilver
-      } else if(this.rarity == 2) {
-        assetId = this.presidentInfo!.assetIdSilver
-        higherAssetId = this.presidentInfo!.assetIdGold
-      } else if(this.rarity == 3) {
-        assetId = this.presidentInfo!.assetIdGold
-        higherAssetId = this.presidentInfo!.assetIdDiamond
-      } else {
-        console.log("wrong rarity")
-        return
-      }
-      let response = await this.upgradeApp.upgrade(wallet, assetId, higherAssetId, this.rarity)
+      console.log(this.rarity)
+      console.log(this.assetId)
+      console.log(this.higherAssetId)
+      let response = await this.upgradeApp.upgrade(wallet, this.assetId, this.higherAssetId, this.rarity)
       if(response) {
         console.log("Successfully upgraded")
       }
@@ -54,8 +60,13 @@ export class AfterSelectionComponent implements OnInit {
     }
   }
 
-  test() {
-    console.log("test")
+  async optInAsset() {
+    let wallet = this.walletService.sessionWallet
+    if(wallet) {
+      let response = await this.upgradeApp.optInAsset(wallet, this.higherAssetId)
+      if(response) {
+        this.isOptedIn = true
+      }
+    }
   }
-
 }

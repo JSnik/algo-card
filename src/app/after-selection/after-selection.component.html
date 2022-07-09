@@ -17,7 +17,9 @@
           <span *ngIf="rarity == 2" class="card-type">SILVER</span>
           <span *ngIf="rarity == 3" class="card-type">GOLD</span>
           <div class="card">
-            <img src="../../assets/img/president-screenshot.png" alt="" />
+            <img *ngIf="rarity <= 1" src="../../assets/img/presidents/classic/{{presidentInfo?.imageBase}}" alt="" />
+            <img *ngIf="rarity == 2" src="../../assets/img/presidents/silver/{{presidentInfo?.imageSilver}}" alt="" />
+            <img *ngIf="rarity == 3" src="../../assets/img/presidents/gold/{{presidentInfo?.imageGold}}" alt="" />
             <div class="quantity">
               <span *ngIf="rarity == 1">({{presidentInfo?.holdingBase}}/2)</span>
               <span *ngIf="rarity == 2">({{presidentInfo?.holdingSilver}}/3)</span>
@@ -27,7 +29,8 @@
         </div>
       </ng-container>
       <div class="big-screen-btn-container">
-        <button class="btn-secondary-costum upgrade small-screen-btn" (click)="upgrade()">UPGRADE</button>
+        <button class="btn-secondary-costum upgrade small-screen-btn" *ngIf="isOptedIn" (click)="upgrade()">UPGRADE</button>
+        <button class="btn-secondary-costum upgrade small-screen-btn" *ngIf="!isOptedIn" (click)="optInAsset()">OptIn</button>
         <img class="arrow" src="https://www.pngmagic.com/product_images/arrow-png-icon.png" alt="">
         <!-- <img class="arrow" src="https://www.pngkit.com/png/full/9-93200_arrow-transparent-arrow-transparent.png" alt=""> -->
       </div>
@@ -38,7 +41,9 @@
           <span *ngIf="rarity == 2" class="card-type">GOLD</span>
           <span *ngIf="rarity == 3" class="card-type">DIAMOND</span>
           <div class="card">
-            <img src="../../assets/img/president-screenshot.png" alt="" />
+            <img *ngIf="rarity <= 1" src="../../assets/img/presidents/silver/{{presidentInfo?.imageSilver}}" alt="" />
+            <img *ngIf="rarity == 2" src="../../assets/img/presidents/gold/{{presidentInfo?.imageGold}}" alt="" />
+            <img *ngIf="rarity == 3" src="../../assets/img/presidents/diamond/{{presidentInfo?.imageDiamond}}" alt="" />
           </div>
         </div>
       </ng-container>

@@ -71,6 +71,18 @@ export enum StateKeys {
   })
 
 export class UpgradeApp {
+    async checkOptIn(wallet: SessionWallet, higherAssetId: number): Promise<boolean> {
+        let client: Algodv2 = getAlgodClient()
+        let addr = wallet.getDefaultAccount()
+        let accInfo = await client.accountInformation(addr).do()
+        console.log(accInfo)
+        let asset = accInfo['assets'].find((element: any) => {return element['asset-id'] == higherAssetId})
+        if(asset) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     constructor(){
     }
@@ -99,9 +111,6 @@ export class UpgradeApp {
     async upgrade(wallet: SessionWallet, assetId: number, higherAssetId: number, rarity: number): Promise<boolean> {
         const suggested = await getSuggested(10)
         const addr = wallet.getDefaultAccount()
-        
-        console.log(ps.platform.upgrade_id)
-        console.log(rarity)
         let amount = 2
         let fee = ps.platform.upgrade_fee1
         if(rarity == 2) {
