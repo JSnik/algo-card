@@ -53,6 +53,13 @@ export class AfterSelectionComponent implements OnInit {
       console.log(this.higherAssetId)
       let response = await this.upgradeApp.upgrade(wallet, this.assetId, this.higherAssetId, this.rarity)
       if(response) {
+        if(this.rarity == 1) {
+          this.presidentInfo!.holdingBase -= 2
+        } else if(this.rarity == 2) {
+          this.presidentInfo!.holdingSilver -= 3
+        } else if(this.rarity == 3) {
+          this.presidentInfo!.holdingGold -= 2
+        }
         console.log("Successfully upgraded")
       }
     } else {
