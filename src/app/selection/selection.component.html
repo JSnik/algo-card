@@ -10,10 +10,10 @@
       <div class="classic-section">
         <h3>Classic Cards</h3>
         <div class="row">
-          <ng-container>
+          <ng-container   *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngFor="let item of presidentsArray"
+              *ngIf="item.imageBase"
             >
                 <div
                   style="position: relative;"
