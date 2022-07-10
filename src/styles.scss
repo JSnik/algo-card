@@ -654,3 +654,7 @@ textarea {
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
+.disable-btn {
+  pointer-events: none !important;
+  background: rgb(129,0,127,0.6) !important;
+}

@@ -10,10 +10,10 @@
       <div class="classic-section">
         <h3>Classic Cards</h3>
         <div class="row">
-          <ng-container>
+          <ng-container   *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngFor="let item of presidentsArray"
+              *ngIf="item.imageBase"
             >
                 <div
                   style="position: relative;"
@@ -21,7 +21,8 @@
                   *ngIf="item.holdingBase > 0"
                   [ngClass]="{
                     upgradeable: item.holdingBase >= 2,
-                    'non-clickable-card': item.holdingBase < 2
+                    'non-clickable-card': item.holdingBase < 2,
+                    'disable-btn': item.holdingBase < 2
                   }"
                   [routerLink]="['/after-selection']"
                   class="card"
@@ -49,7 +50,8 @@
                   *ngIf="item.holdingSilver > 0"
                   [ngClass]="{
                     upgradeable: item.holdingSilver >= 3,
-                    'non-clickable-card': item.holdingSilver < 3
+                    'non-clickable-card': item.holdingSilver < 3,
+                    'disable-btn': item.holdingSilver < 3
                   }"
                   [routerLink]="['/after-selection']"
                   class="card"
