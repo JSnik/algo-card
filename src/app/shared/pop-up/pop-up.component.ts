@@ -245,6 +245,15 @@ export class PopUpComponent implements OnInit, DoCheck {
       }
       console.log('emited')
       console.log('Connected to MyAlgoWallet')
+      localStorage.setItem('reload', 'true');
+      if (localStorage.getItem('reload')) {
+        location.reload();
+        setTimeout(() => {
+          localStorage.removeItem('reload');
+        }, 4000)
+      } else {
+        return
+      }
     } else if (value == 'WalletConnect') {
       await this._walletsConnectService.connect('wallet-connect');
       if (this._walletsConnectService.myAlgoAddress && this._walletsConnectService.myAlgoName !== undefined) {

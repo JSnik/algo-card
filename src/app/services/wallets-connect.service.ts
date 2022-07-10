@@ -67,16 +67,6 @@ export class WalletsConnectService {
     // localStorage.setItem('walletsOfUser', JSON.stringify(this.sessionWallet.wallet.accounts));
     console.log(this.sessionWallet, 'esaaa');
 
-    // localStorage.setItem('reload', 'true');
-    // if (localStorage.getItem('reload')) {
-    //   location.reload();
-    //   setTimeout(() => {
-    //     localStorage.removeItem('reload');
-    //   }, 4000)
-    // } else {
-    //   return
-    // }
-
     this.router.navigateByUrl('/selection', { skipLocationChange: true }).then(() => {
       this.router.navigate(['selection']);
     });
