@@ -42,7 +42,7 @@ export class WalletsConnectService {
     let index = localStorage.getItem('walletIndex');
     let finalIndex = +index!;
     if (localStorage.getItem('walletsOfUser')) {
-      localStorage.setItem('wallet', JSON.stringify(JSON.parse(localStorage.getItem('walletsOfUser')!)[finalIndex]));
+      localStorage.setItem('wallet', JSON.parse(localStorage.getItem('walletsOfUser')!)[finalIndex]);
     } else {
       localStorage.setItem('wallet', this.myAlgoAddress[finalIndex]);
     }
@@ -72,7 +72,7 @@ export class WalletsConnectService {
     //   location.reload();
     //   setTimeout(() => {
     //     localStorage.removeItem('reload');
-    //   }, 1000)
+    //   }, 4000)
     // } else {
     //   return
     // }

@@ -13,7 +13,7 @@
           <ng-container   *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngIf="item.imageBase"
+              *ngIf="item.holdingBase > 0"
             >
                 <div
                   style="position: relative;"
@@ -21,8 +21,7 @@
                   *ngIf="item.holdingBase > 0"
                   [ngClass]="{
                     upgradeable: item.holdingBase >= 2,
-                    'non-clickable-card': item.holdingBase < 2,
-                    'disable-btn': item.holdingBase < 2
+                    'non-clickable-card': item.holdingBase < 2
                   }"
                   [routerLink]="['/after-selection']"
                   class="card"
@@ -39,10 +38,10 @@
       <div class="silver-section">
         <h3>Silver Cards</h3>
         <div class="row">
-          <ng-container>
+          <ng-container *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngFor="let item of presidentsArray"
+              *ngIf="item.holdingSilver > 0"
             >
                 <div
                   style="position: relative;"
@@ -68,10 +67,10 @@
       <div class="silver-section">
         <h3>Gold Cards</h3>
         <div class="row">
-          <ng-container>
+          <ng-container *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngFor="let item of presidentsArray"
+              *ngIf="item.holdingGold > 0"
             >
                 <div
                 style="position: relative;"
@@ -96,21 +95,16 @@
       <div class="silver-section">
         <h3>Diamond Cards</h3>
         <div class="row">
-          <ng-container>
+          <ng-container *ngFor="let item of presidentsArray">
             <div
               class="col-md-3"
-              *ngFor="let item of presidentsArray"
+              *ngIf="item.holdingDiamond > 0"
             >
                 <div
                 style="position: relative;"
                 (click)="storePresident(item, 4)"
                   *ngIf="item.holdingDiamond> 0"
-                  [ngClass]="{
-                    upgradeable: item.holdingDiamond >= 2,
-                    'non-clickable-card': item.holdingDiamond < 2
-                  }"
-                  [routerLink]="['/after-selection']"
-                  class="card"
+                  class="card non-clickable-card"
                 >
                   <img src="../../assets/img/presidents/diamond/{{item.imageDiamond}}" alt="" />
                   <div class="quantity">
