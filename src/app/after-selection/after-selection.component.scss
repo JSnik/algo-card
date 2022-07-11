@@ -138,3 +138,27 @@
     display: none;
   }
 }
+.card {
+  img {
+    height: 380px !important;
+  }
+}
+@media (max-width: 500px) {
+  .big-screen-btn-container {
+    display: block !important;
+    margin: 15px 0px !important;
+    .small-screen-btn {
+      display:  block !important;
+      margin: 0px !important;
+      width: 100% !important;
+      margin-bottom: 10px !important;
+    }
+    img {
+      display: none !important;
+    }
+  }
+  .section {
+    margin: 0px !important;
+  }
+
+}
