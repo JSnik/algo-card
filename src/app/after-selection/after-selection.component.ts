@@ -55,10 +55,13 @@ export class AfterSelectionComponent implements OnInit {
       if(response) {
         if(this.rarity == 1) {
           this.presidentInfo!.holdingBase -= 2
+          this.presidentInfo!.holdingSilver += 1
         } else if(this.rarity == 2) {
           this.presidentInfo!.holdingSilver -= 3
+          this.presidentInfo!.holdingGold += 1
         } else if(this.rarity == 3) {
           this.presidentInfo!.holdingGold -= 2
+          this.presidentInfo!.holdingDiamond += 1
         }
         console.log("Successfully upgraded")
       }

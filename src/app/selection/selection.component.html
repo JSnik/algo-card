@@ -18,7 +18,6 @@
                 <div
                   style="position: relative;"
                   (click)="storePresident(item, 1)"
-                  *ngIf="item.holdingBase > 0"
                   [ngClass]="{
                     upgradeable: item.holdingBase >= 2,
                     'non-clickable-card': item.holdingBase < 2
@@ -26,7 +25,7 @@
                   [routerLink]="['/after-selection']"
                   class="card"
                 >
-                  <img src="../../assets/img/presidents/classic/{{item.imageBase}}" alt="" />
+                  <img src="https://drive.google.com/uc?id={{item.imageBase}}" alt="" />
                   <div class="quantity">
                     <span>({{item.holdingBase}}/2)</span>
                   </div>
@@ -46,7 +45,6 @@
                 <div
                   style="position: relative;"
                   (click)="storePresident(item, 2)"
-                  *ngIf="item.holdingSilver > 0"
                   [ngClass]="{
                     upgradeable: item.holdingSilver >= 3,
                     'non-clickable-card': item.holdingSilver < 3,
@@ -55,7 +53,7 @@
                   [routerLink]="['/after-selection']"
                   class="card"
                 >
-                  <img src="../../assets/img/presidents/silver/{{item.imageSilver}}" alt="" />
+                  <img src="https://drive.google.com/uc?id={{item.imageSilver}}" alt="" />
                   <div class="quantity">
                     <span>({{item.holdingSilver}}/3)</span>
                   </div>
@@ -75,7 +73,6 @@
                 <div
                 style="position: relative;"
                 (click)="storePresident(item, 3)"
-                  *ngIf="item.holdingGold > 0"
                   [ngClass]="{
                     upgradeable: item.holdingGold >= 2,
                     'non-clickable-card': item.holdingGold < 2
@@ -83,7 +80,7 @@
                   [routerLink]="['/after-selection']"
                   class="card"
                 >
-                  <img src="../../assets/img/presidents/gold/{{item.imageGold}}" alt="" />
+                  <img src="https://drive.google.com/uc?id={{item.imageGold}}" alt="" />
                   <div class="quantity">
                     <span>({{item.holdingGold}}/2)</span>
                   </div>
@@ -103,10 +100,9 @@
                 <div
                 style="position: relative;"
                 (click)="storePresident(item, 4)"
-                  *ngIf="item.holdingDiamond> 0"
                   class="card non-clickable-card"
                 >
-                  <img src="../../assets/img/presidents/diamond/{{item.imageDiamond}}" alt="" />
+                  <img src="https://drive.google.com/uc?id={{item.imageDiamond}}" alt="" />
                   <div class="quantity">
                     <span>({{item.holdingDiamond}}/1)</span>
                   </div>
