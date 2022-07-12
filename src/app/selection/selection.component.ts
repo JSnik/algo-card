@@ -25,7 +25,7 @@ export type PresidentInfo = {
 })
 export class SelectionComponent implements OnInit {
   presidentsArray: PresidentInfo[] = []
-
+  CACHE_KEY: any = 'CACHE';
   // nonClickable: boolean = true;
   constructor(
     private upgradeApp: UpgradeApp,
@@ -37,29 +37,33 @@ export class SelectionComponent implements OnInit {
   }
 
   async loadPresidents() {
-    this.presidentsArray = []
-    let wallet = localStorage.getItem("wallet")//this.walletService.sessionWallet!
-    console.log(wallet)
-    for(let i = 0; i < presidents.length; i++) {
+    if (localStorage.getItem(this.CACHE_KEY)) {
+      this.presidentsArray = JSON.parse(this.CACHE_KEY)
+    } else {
+      this.presidentsArray = []
+      let wallet = localStorage.getItem("wallet")//this.walletService.sessionWallet!
+      console.log(wallet)
+      for(let i = 0; i < presidents.length; i++) {
 
-      this.presidentsArray.push(
-        {
-          assetIdBase: presidents[i].r0.id,
-          holdingBase: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r0.id),
-          imageBase: presidents[i].r0.img,
-          assetIdSilver: presidents[i].r1.id,
-          holdingSilver: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r1.id),
-          imageSilver: presidents[i].r1.img,
-          assetIdGold: presidents[i].r2.id,
-          holdingGold: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r2.id),
-          imageGold: presidents[i].r2.img,
-          assetIdDiamond: presidents[i].r3.id,
-          holdingDiamond: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r3.id),
-          imageDiamond: presidents[i].r3.img,
-        }
-      )
+        this.presidentsArray.push(
+          {
+            assetIdBase: presidents[i].r0.id,
+            holdingBase: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r0.id),
+            imageBase: presidents[i].r0.img,
+            assetIdSilver: presidents[i].r1.id,
+            holdingSilver: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r1.id),
+            imageSilver: presidents[i].r1.img,
+            assetIdGold: presidents[i].r2.id,
+            holdingGold: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r2.id),
+            imageGold: presidents[i].r2.img,
+            assetIdDiamond: presidents[i].r3.id,
+            holdingDiamond: await this.upgradeApp.getAssetAmount(wallet!, presidents[i].r3.id),
+            imageDiamond: presidents[i].r3.img,
+          }
+        )
+      }
+      localStorage.setItem(this.CACHE_KEY, JSON.stringify(this.presidentsArray));
     }
-    console.log(this.presidentsArray)
   }
 
   storePresident(info: PresidentInfo, rarity: number) {
@@ -67,5 +71,4 @@ export class SelectionComponent implements OnInit {
     localStorage.setItem('president', JSON.stringify(info))
     localStorage.setItem('rarity', JSON.stringify(rarity))
   }
-
 }
