@@ -38,7 +38,7 @@ export class SelectionComponent implements OnInit {
 
   async loadPresidents() {
     if (localStorage.getItem(this.CACHE_KEY)) {
-      this.presidentsArray = JSON.parse(this.CACHE_KEY)
+      this.presidentsArray = JSON.parse(localStorage.getItem(this.CACHE_KEY)!);
     } else {
       this.presidentsArray = []
       let wallet = localStorage.getItem("wallet")//this.walletService.sessionWallet!
