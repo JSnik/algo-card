@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import { UpgradeApp } from '../blockchain/upgrade_application';
 import { PresidentInfo } from '../selection/selection.component';
 import { WalletsConnectService } from '../services/wallets-connect.service';
@@ -9,7 +8,12 @@ import { WalletsConnectService } from '../services/wallets-connect.service';
   templateUrl: './after-selection.component.html',
   styleUrls: ['./after-selection.component.scss']
 })
-export class AfterSelectionComponent implements OnInit {
+export class AfterSelectionComponent implements OnInit, DoCheck {
+  finalStepApi: boolean = false;
+  isFailed: boolean = false;
+  isPending: boolean = false;
+
+  closePopup: any;
   isOptedIn = false
   presidentInfo: PresidentInfo | undefined
   presidentNumber: number = 0
@@ -19,8 +23,31 @@ export class AfterSelectionComponent implements OnInit {
   constructor(
     private walletService: WalletsConnectService,
     private upgradeApp: UpgradeApp,
-    private spinner: NgxSpinnerService
   ) { }
+
+  ngDoCheck() {
+    if(localStorage.getItem('sendWaitSuccess') === 'pending') {
+      this.closePopup = true;
+      this.isPending = true;
+      this.isFailed = false;
+      this.finalStepApi = false;
+    } else if (localStorage.getItem('sendWaitSuccess') === 'fail') {
+      this.closePopup = true;
+      this.isFailed = true;
+      this.finalStepApi = false;
+      this.isPending = false;
+    } else if (localStorage.getItem('sendWaitSuccess') === 'success') {
+      this.closePopup = true;
+      this.finalStepApi = true;
+      this.isFailed = false;
+      this.isPending = false;
+    }
+
+  }
+
+  closePopUp($event: boolean) {
+    this.closePopup = $event;
+  }
 
   async ngOnInit(): Promise<void> {
     if(localStorage.getItem('president')){
@@ -45,7 +72,7 @@ export class AfterSelectionComponent implements OnInit {
       this.isOptedIn = await this.upgradeApp.checkOptIn(wallet, this.higherAssetId)
       console.log(this.isOptedIn)
     }
-    
+
   }
 
   async upgrade(): Promise<void> {
@@ -55,9 +82,7 @@ export class AfterSelectionComponent implements OnInit {
       console.log(this.rarity)
       console.log(this.assetId)
       console.log(this.higherAssetId)
-      this.spinner.show()
       let response = await this.upgradeApp.upgrade(wallet, this.assetId, this.higherAssetId, this.rarity, this.presidentNumber)
-      this.spinner.hide()
       if(response) {
         if(this.rarity == 1) {
           this.presidentInfo!.holdingBase -= 2
@@ -81,7 +106,7 @@ export class AfterSelectionComponent implements OnInit {
   async optInAsset() {
     let wallet = this.walletService.sessionWallet
     if(wallet) {
-      let response = await this.upgradeApp.optInAsset(wallet, this.higherAssetId)
+      let response = await this.upgradeApp.optInAsset(wallet, this.higherAssetId!)
       if(response) {
         this.isOptedIn = true
       }

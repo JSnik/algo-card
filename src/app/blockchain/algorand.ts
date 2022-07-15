@@ -184,31 +184,31 @@ export function b64ToAddr(x: string){
 }
 
 export async function sendWait(signed: any[]): Promise<any> {
-    const client = getAlgodClient()
+  const client = getAlgodClient()
 
-    try {
-        const {txId}  = await client.sendRawTransaction(signed.map((t)=>{return t.blob})).do()
-        // TODO: implement some kind of popup for showing waiting for blockchain network
-        //showNetworkWaiting(txId)
-        localStorage.setItem('sendWaitSuccess', 'pending')
-        const result = await waitForConfirmation(client, txId, 3)
-        //showNetworkSuccess(txId)
-        localStorage.setItem('sendWaitSuccess', 'success')
-        setTimeout(() => {
-            localStorage.removeItem('sendWaitSuccess');
-        }, 200);
-        return result
-    } catch (error) {
-        //showNetworkError("", error)
-        console.log("error in txn: " + error)
-        localStorage.setItem('sendWaitSuccess', 'fail');
-        setTimeout(() => {
-            localStorage.removeItem('sendWaitSuccess');
-        }, 200);
-        localStorage.setItem('sendWaitError', JSON.stringify(error))
-    }
+  try {
+    const {txId}  = await client.sendRawTransaction(signed.map((t)=>{return t.blob})).do()
+    // TODO: implement some kind of popup for showing waiting for blockchain network
+    //showNetworkWaiting(txId)
+    localStorage.setItem('sendWaitSuccess', 'pending')
+    const result = await waitForConfirmation(client, txId, 3)
+    //showNetworkSuccess(txId)
+    localStorage.setItem('sendWaitSuccess', 'success')
+    setTimeout(() => {
+      localStorage.removeItem('sendWaitSuccess');
+    }, 200);
+    return result
+  } catch (error) {
+    //showNetworkError("", error)
+    console.log("error in txn: " + error)
+    localStorage.setItem('sendWaitSuccess', 'fail');
+    setTimeout(() => {
+      localStorage.removeItem('sendWaitSuccess');
+    }, 200);
+    localStorage.setItem('sendWaitError', JSON.stringify(error))
+  }
 
-    return undefined
+  return undefined
 }
 
 
