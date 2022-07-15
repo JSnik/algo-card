@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import presidents from '../../environments/presidents_local.json'
+import presidents from '../../environments/presidents.json'
 import { UpgradeApp } from '../blockchain/upgrade_application';
 import { WalletsConnectService } from '../services/wallets-connect.service';
 
