@@ -32,6 +32,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     NgxSpinnerModule
   ],
+  exports: [
+    NgxSpinnerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
