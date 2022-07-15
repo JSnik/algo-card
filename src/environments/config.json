@@ -1,10 +1,10 @@
 {
     "domain": "Vexpad",
     "algod":{
-        "server":"http://localhost",
-        "port":"4001",
-        "token":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "network": "TestNet"
+        "server":"https://node.algoexplorerapi.io",
+        "port":"",
+        "token":"",
+        "network": "MainNet"
     },
     "indexer": {
         "server":"http://localhost",
@@ -18,9 +18,9 @@
     "explorer":"algoscan.app",
     "platform": {
         "burn_addr": "MXJT53H5ZO7KWBYMCLZ4ZVWEF5JS4NLVHEII6OI3DCLI3KL26BRDTAFJKA",
-        "fee_addr": "DZUR56BQB5TQZCG3QERPJ2NB7JYBYGFAJBGBRQN2IUMTLXJE6RJ52ZYD3U",
-        "upgrade_id": 13097,
-        "upgrade_addr": "QRJ3VKT43K4E6F4YS6SKWBFKOVANVYTUKWV3DVHKCRMBVV4MY7L5HNGAYY",
+        "fee_addr": "V4RMZVB5UQKIXGMEUDAWTCXLMAHSENG5WO77YOEVL525F3FLIQQ3R5RH4U",
+        "upgrade_id": 808855739,
+        "upgrade_addr": "KKYDKNCNG5KMNYUFIYIHRGO4AO6NGXCGH3NZLRM7EG3MXVY2647BRDQ5IM",
         "upgrade_fee1": 34000000,
         "upgrade_fee2": 89000000,
         "upgrade_fee3": 144000000
