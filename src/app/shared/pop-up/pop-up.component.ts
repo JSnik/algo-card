@@ -25,9 +25,6 @@ export type SmartToolData = {
   styleUrls: ['./pop-up.component.scss'],
 })
 export class PopUpComponent implements OnInit, DoCheck {
-  @Input() isDeployedSuccess: boolean = false;
-  @Input() isDeployedFaied: boolean = false;
-  @Input() isDeployedPending: boolean = false;
 
   @Output() isConnectedToWallet = new EventEmitter<boolean>();
   @Output() isClosed = new EventEmitter<boolean>();
