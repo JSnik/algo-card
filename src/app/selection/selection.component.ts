@@ -61,9 +61,10 @@ export class SelectionComponent implements OnInit {
       }
   }
 
-  storePresident(info: PresidentInfo, rarity: number) {
+  storePresident(info: PresidentInfo, rarity: number, presNumber: number) {
     console.log("store")
     localStorage.setItem('president', JSON.stringify(info))
     localStorage.setItem('rarity', JSON.stringify(rarity))
+    localStorage.setItem('number', JSON.stringify(presNumber))
   }
 }

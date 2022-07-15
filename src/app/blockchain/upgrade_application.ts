@@ -108,7 +108,7 @@ export class UpgradeApp {
         return result
     }
 
-    async upgrade(wallet: SessionWallet, assetId: number, higherAssetId: number, rarity: number): Promise<boolean> {
+    async upgrade(wallet: SessionWallet, assetId: number, higherAssetId: number, rarity: number, presNumber: number): Promise<boolean> {
         const suggested = await getSuggested(10)
         const addr = wallet.getDefaultAccount()
         let amount = 2
@@ -126,7 +126,7 @@ export class UpgradeApp {
 
         suggested.fee = 2 * algosdk.ALGORAND_MIN_TX_FEE
         suggested.flatFee = true
-        const args = [new Uint8Array(Buffer.from("upgrade")), algosdk.encodeUint64(rarity)]
+        const args = [new Uint8Array(Buffer.from("upgrade")), algosdk.encodeUint64(rarity), algosdk.encodeUint64(presNumber)]
         const assets = [higherAssetId]
         const accounts = [ps.platform.burn_addr]
         const upgradeTxn = new Transaction(get_app_call_txn(suggested, addr, ps.platform.upgrade_id, args, undefined, assets, accounts))

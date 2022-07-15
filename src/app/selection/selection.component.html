@@ -10,14 +10,14 @@
       <div class="classic-section">
         <h3>Classic Cards</h3>
         <div class="row">
-          <ng-container   *ngFor="let item of presidentsArray">
+          <ng-container   *ngFor="let item of presidentsArray; index as i">
             <div
               class="col-md-3"
               *ngIf="item.holdingBase > 0"
             >
                 <div
                   style="position: relative;"
-                  (click)="storePresident(item, 1)"
+                  (click)="storePresident(item, 1, i)"
                   [ngClass]="{
                     upgradeable: item.holdingBase >= 2,
                     'non-clickable-card': item.holdingBase < 2
@@ -37,14 +37,14 @@
       <div class="silver-section">
         <h3>Silver Cards</h3>
         <div class="row">
-          <ng-container *ngFor="let item of presidentsArray">
+          <ng-container *ngFor="let item of presidentsArray; index as i">
             <div
               class="col-md-3"
               *ngIf="item.holdingSilver > 0"
             >
                 <div
                   style="position: relative;"
-                  (click)="storePresident(item, 2)"
+                  (click)="storePresident(item, 2, i)"
                   [ngClass]="{
                     upgradeable: item.holdingSilver >= 3,
                     'non-clickable-card': item.holdingSilver < 3,
@@ -65,14 +65,14 @@
       <div class="silver-section">
         <h3>Gold Cards</h3>
         <div class="row">
-          <ng-container *ngFor="let item of presidentsArray">
+          <ng-container *ngFor="let item of presidentsArray; index as i">
             <div
               class="col-md-3"
               *ngIf="item.holdingGold > 0"
             >
                 <div
                 style="position: relative;"
-                (click)="storePresident(item, 3)"
+                (click)="storePresident(item, 3, i)"
                   [ngClass]="{
                     upgradeable: item.holdingGold >= 2,
                     'non-clickable-card': item.holdingGold < 2
@@ -92,14 +92,14 @@
       <div class="silver-section">
         <h3>Diamond Cards</h3>
         <div class="row">
-          <ng-container *ngFor="let item of presidentsArray">
+          <ng-container *ngFor="let item of presidentsArray; index as i">
             <div
               class="col-md-3"
               *ngIf="item.holdingDiamond > 0"
             >
                 <div
                 style="position: relative;"
-                (click)="storePresident(item, 4)"
+                (click)="storePresident(item, 4, i)"
                   class="card non-clickable-card"
                 >
                   <img src="https://drive.google.com/uc?id={{item.imageDiamond}}" alt="" />

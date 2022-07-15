@@ -13,6 +13,7 @@ import { AfterSelectionComponent } from './after-selection/after-selection.compo
 import {DropDownSelectorComponent} from "./shared/drop-down-selector/drop-down-selector.component";
 import {HeaderComponent} from "./shared/header/header.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

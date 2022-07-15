@@ -1,10 +1,10 @@
 {
     "domain": "Vexpad",
     "algod":{
-        "server":"http://localhost",
-        "port":"4001",
-        "token":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "network": "TestNet"
+        "server":"https://node.algoexplorerapi.io",
+        "port":"",
+        "token":"",
+        "network": "MainNet"
     },
     "indexer": {
         "server":"http://localhost",

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { UpgradeApp } from '../blockchain/upgrade_application';
 import { PresidentInfo } from '../selection/selection.component';
 import { WalletsConnectService } from '../services/wallets-connect.service';
@@ -11,18 +12,21 @@ import { WalletsConnectService } from '../services/wallets-connect.service';
 export class AfterSelectionComponent implements OnInit {
   isOptedIn = false
   presidentInfo: PresidentInfo | undefined
+  presidentNumber: number = 0
   rarity: number = -1
   assetId: number = 0
   higherAssetId: number = 0
   constructor(
     private walletService: WalletsConnectService,
-    private upgradeApp: UpgradeApp
+    private upgradeApp: UpgradeApp,
+    private spinner: NgxSpinnerService
   ) { }
 
   async ngOnInit(): Promise<void> {
     if(localStorage.getItem('president')){
       this.presidentInfo = JSON.parse(localStorage.getItem('president')!)
       this.rarity = JSON.parse(localStorage.getItem('rarity')!)
+      this.presidentNumber = JSON.parse(localStorage.getItem('number')!)
     }
     console.log(this.rarity)
     console.log(this.presidentInfo)
@@ -51,7 +55,9 @@ export class AfterSelectionComponent implements OnInit {
       console.log(this.rarity)
       console.log(this.assetId)
       console.log(this.higherAssetId)
-      let response = await this.upgradeApp.upgrade(wallet, this.assetId, this.higherAssetId, this.rarity)
+      this.spinner.show()
+      let response = await this.upgradeApp.upgrade(wallet, this.assetId, this.higherAssetId, this.rarity, this.presidentNumber)
+      this.spinner.hide()
       if(response) {
         if(this.rarity == 1) {
           this.presidentInfo!.holdingBase -= 2
@@ -64,9 +70,11 @@ export class AfterSelectionComponent implements OnInit {
           this.presidentInfo!.holdingDiamond += 1
         }
         console.log("Successfully upgraded")
+        alert('Successfully upgraded!')
       }
     } else {
       console.log("not connected")
+      alert('Error in upgrade')
     }
   }
 
